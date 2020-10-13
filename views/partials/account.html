@@ -19,9 +19,6 @@
   <div class="dialog-tabs" style="margin:auto">
     <div class="dialog-tab" v-bind:class="{open:account=='profile'}" v-on:click="account='profile'"><span><%=__("profile_caption")%></span></div>
     <div class="dialog-tab" v-bind:class="{open:account=='language'}" v-on:click="account='language'"><span><%=__("language_caption")%></span></div>
-    <div class="dialog-tab" v-bind:class="{open:account=='notifications'}" v-on:click="account='notifications'"><span><%=__("notifications_caption")%></span></div>
-    <div class="dialog-tab" v-bind:class="{open:account=='password'}" v-on:click="account='password'"><span><%=__("password_caption")%></span></div>
-    <div class="dialog-tab" v-bind:class="{open:account=='terminate'}" v-on:click="account='terminate'"><span><%=__("terminate_caption")%></span></div>
   </div>
 
   <div class="dialog-section text-left">
@@ -67,22 +64,11 @@
 
         <div class="form-group">
           <label class="label" ><%=__("profile_name")%></label>
-          <input type="text" id="user-nickname"
+          <input type="text" id="user-username"
           pattern=".{3,}"
           required title="3 characters minimum"
           class="input input-white no-b" data-i18n="[placeholder]account.username.input"
-          v-model="user.nickname" placeholder="Choose a username">
-        </div>
-
-        <div class="form-group">
-          <label class="label"><%=__("profile_email")%></label>
-          <input
-          type="email"
-          id="new-email"
-          class="input input-white no-b"
-          v-model="user.email"
-          v-on:change="user.email_changed=true"
-          placeholder="mail@example.com">
+          v-model="user.username" placeholder="Choose a username" disabled>
         </div>
 
         <div class="form-group">
@@ -111,70 +97,6 @@
         <label class="radio" v-bind:class="{checked: user.prefs_language=='es'}" v-on:click="save_user_language('es')">
           <input type="radio" id="user-preferences_language" name="language" value="es"><span>Español</span>
         </label>        
-      </div>
-    </div>
-
-    <div class="collapse" v-bind:class="{in:account=='notifications'}">
-      <div class="modal-section labels-inline">
-        <div class="form-group">
-          <label class="checkbox"
-            v-bind:class="{checked: user.prefs_email_notifications}"
-            v-on:click="account_save_user_notifications(!user.prefs_email_notifications);">
-            <span><%=__('notifications_option_chat')%></span>
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="collapse" v-bind:class="{in:account=='password'}">
-      <h4>Change Password</h4>
-      <div class="modal-section labels-inline">
-        <div class="form-group">
-          <label class="label"><%=__("current_password")%></label>
-          <input id="current-password" class="input input-white no-b" v-model="password_change_current" type="password">
-        </div>
-        <div class="form-group">
-          <label class="label"><%=__("new_password")%></label>
-          <input id="new-password" class="input input-white no-b" v-model="password_change_new" type="password">
-        </div>
-        <div class="form-group">
-          <label class="label"><%=__("verify_password")%></label>
-          <input id="new-password-confirmation" class="input input-white no-b" v-model="password_change_new_confirmation" type="password">
-        </div>
-
-        <div class="center alert alert-danger" v-if="password_change_error">{{password_change_error}}</div>
-      </div>
-
-      <div class="modal-footer">
-          <button
-            class="btn btn-dark btn-md"
-            v-on:click="save_user_password(password_change_current, password_change_new, password_change_new_confirmation);" >
-            <%=__("change_password")%>
-          </button>
-      </div>
-    </div>
-
-    <div class="collapse" v-bind:class="{in:account=='terminate'}">
-      <h4>Terminate Account</h4>
-      <div class="modal-section labels-inline">
-        <div class="form-group">
-          <label class="label"><%=__("current_password")%></label>
-          <input v-model="account_remove_password" class="input input-white no-b" type="password">
-        </div>
-        
-        <div class="form-group">
-          <label class="label"><%=__("terminate_reason")%></label>
-          <textarea class="input input-white no-b" v-model="account_remove_feedback"></textarea>
-          <p class="message"><%=__("terminate_reason_caption")%></p>
-        </div>
-      </div>
-      
-      <div class="modal-section labels-inline">
-        <div class="center alert alert-danger" v-if="account_remove_error">{{account_remove_error}}</div>
-      </div>
-      
-      <div class="modal-footer">
-        <button class="btn btn-stroke-darken btn-md" v-on:click="remove_account(account_remove_password, account_remove_feedback)">Terminate Account</button>
       </div>
     </div>
   </div>

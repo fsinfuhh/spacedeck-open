@@ -39,95 +39,6 @@ router.get('/current', function(req, res, next) {
   }
 });
 
-// create user
-router.post('/', function(req, res) {
-  if (!req.body["email"] || !req.body["password"]) {
-    res.status(400).json({"error":"email or password missing"});
-    return;
-  }
-  
-  var email = req.body["email"].toLowerCase();
-  var nickname = req.body["nickname"];
-  var password = req.body["password"];
-  var password_confirmation = req.body["password_confirmation"];
-
-  if (password_confirmation != password) {
-    res.status(400).json({"error":"password_confirmation"});
-    return;
-  }
-  
-  if (!validator.isEmail(email)) {
-    res.status(400).json({"error":"email_invalid"});
-    return;
-  }
-  
-  var createUser = function() {
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(password, salt, function(err, hash) {
-        crypto.randomBytes(16, function(ex, buf) {
-          var token = buf.toString('hex');
-
-          var u = {
-            _id: uuidv4(),
-            email: email,
-            account_type: "email",
-            nickname: nickname,
-            password_hash: hash,
-            prefs_language: req.i18n.locale,
-            confirmation_token: token
-          };
-
-          db.User.create(u)
-            .error(err => {
-              res.sendStatus(400);
-            })
-            .then(u => {
-              var homeFolder = {
-                _id: uuidv4(),
-                name: req.i18n.__("home"),
-                space_type: "folder",
-                creator_id: u._id
-              };
-              db.Space.create(homeFolder)
-                .error(err => {
-                  res.sendStatus(400);
-                })
-                .then(homeFolder => {
-                  u.home_folder_id = homeFolder._id;
-                  u.save()
-                    .then(() => {
-                      // home folder created,
-                      // auto accept pending invites
-                      db.Membership.update({
-                        "state": "active"
-                      }, {
-                        where: {
-                          "email_invited": u.email,
-                          "state": "pending"
-                        }
-                      });
-                      res.status(201).json({});          
-                    })
-                    .error(err => {
-                      res.status(400).json(err);
-                    });
-                })
-            });
-        });
-      });
-    });
-  };
-  
-  db.User.findAll({where: {email: email}})
-    .then(users => {
-      if (users.length == 0) {
-        createUser();
-      } else {
-        res.status(400).json({"error":"user_email_already_used"});
-      }
-    })
-});
-
 router.get('/current', function(req, res, next) {
   if (req.user) {
     res.status(200).json(req.user);
@@ -143,6 +54,7 @@ router.put('/:id', function(req, res, next) {
     var newAttr = req.body;
     newAttr.updated_at = new Date();
     delete newAttr['_id'];
+    delete newAttr['username'];
 
     db.User.update(newAttr, {where: {"_id": user._id}}).then(function(updatedUser) {
       res.status(200).json(newAttr);

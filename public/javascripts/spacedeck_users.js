@@ -73,7 +73,7 @@ SpacedeckUsers = {
       }.bind(this));
     },
 
-    login_submit: function(email, password, $event, on_success) {
+    login_submit: function(username, password, $event, on_success) {
       this.loading_user = true;
       this.login_error = null;
 
@@ -82,7 +82,7 @@ SpacedeckUsers = {
         $event.stopPropagation();
       }
 
-      create_session(email, password, function(session) {
+      create_session(username, password, function(session) {
         console.log("session: ", session);
         this.loading_user = false;
         this.session = session;
@@ -93,7 +93,7 @@ SpacedeckUsers = {
         var msg = "";
 
         if (req.status>=403) {
-          var msg = "error_unknown_email";
+          var msg = "error_unknown_username";
         } else {
           try {
             var msg = "error_"+(JSON.parse(req.responseText).error);

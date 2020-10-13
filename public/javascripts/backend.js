@@ -261,8 +261,8 @@ function create_user(name, email, password, password_confirmation, on_success, o
   load_resource("post", "/users", {email:email, nickname:name, password:password, password_confirmation: password_confirmation}, on_success, on_error);
 }
 
-function create_session(email, password, on_success, on_error) {
-  load_resource("post", "/sessions", {email:email, password:password}, on_success, on_error);
+function create_session(username, password, on_success, on_error) {
+  load_resource("post", "/sessions", {username:username, password:password}, on_success, on_error);
 }
 
 function delete_session(on_success, on_error) {

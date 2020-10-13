@@ -1,27 +1,22 @@
-<header id="landing-header" class="header" v-cloak v-if="(active_view == 'login' || active_view == 'signup' || active_view == 'password-reset' || active_view == 'password-confirm')">
+<header id="landing-header" class="header" v-cloak v-if="active_view == 'login'">
   <div class="header-left">
     <a class="btn btn-transparent btn-nude" href="/"><img src="/images/sd6-logo-black.svg" width="190"></a>
-  </div>
-
-  <div class="header-right pull-right">
-    <a v-if="active_view != 'login'" class="btn btn-md btn-dark btn-round" href="/login"><%= __("login") %></a>
-    <a v-if="active_view != 'signup'" class="btn btn-md btn-dark btn-round" href="/signup"><%= __("signup") %></a>
   </div>
 </header>
 
 <div id="account-forms"
   v-bind:class="{'got-user':logged_in}"
   v-cloak
-  v-if="(active_view == 'login' || active_view == 'signup' || active_view == 'password-reset' || active_view == 'password-confirm')">
+  v-if="active_view == 'login'">
 
   <div id="login" v-bind:class="{active : active_view == 'login'}">
     <div class="content">
-      <form v-on:submit="login_submit(user_forms_email, login_password, $event)">
+      <form v-on:submit="login_submit(user_forms_username, login_password, $event)">
         <h3>Login</h3>
 
         <div class="tight">
           <div class="form-group">
-            <input class="input" name="email" type="email" required v-model="user_forms_email" placeholder="<%=__("email")%>">
+            <input class="input" name="username" type="text" required v-model="user_forms_username" placeholder="<%=__("username")%>">
           </div>
           <div class="form-group">
             <input class="input" name="password" type="password" required v-model="login_password" placeholder="<%=__("password")%>">
@@ -29,96 +24,16 @@
         </div>
 
         <button type="submit" class="btn btn-dark btn-block">
-          <span v-show="!loading_user">Login</span>
-          <span v-show="loading_user">Logging in…</span>
+          <span v-show="!loading_user"><%=__("login")%></span>
+          <span v-show="loading_user"><%=__("logging_in")%></span>
         </button>
 
         <div class="center alert alert-danger" v-if="login_error">{{login_error}}</div>
 
         <div style="margin-top:2em">
-          <a href="/password-reset">Forgot Password</a>
+          <a href="https://mafiasi.de/registration/password_reset/"><%=__("reset_password")%></a>
         </div>
       </form>
     </div>
   </div>
-
-  <div id="signup" v-bind:class="{active : active_view == 'signup'}">
-    <div class="content">
-      <form v-on:submit="signup_submit($event, user_forms_name, user_forms_email, signup_password, signup_password_confirmation)">
-        <h4><%=__("signup")%></h4>
-
-        <div class="tight">
-          <div class="form-group">
-            <input class="input" type="email" required id="user-email" v-model="user_forms_email" placeholder="<%=__("email")%>" autofocus v-focus>
-          </div>
-
-          <div class="form-group">
-            <input class="input" id="user-password" required type="password" v-model="signup_password" placeholder="<%=__("password")%>">
-          </div>
-
-          <div class="form-group">
-            <input class="input" id="user-password-confirmation" required type="password" v-model="signup_password_confirmation" placeholder="Repeat Password">
-          </div>
-        </div>
-        
-        <div class="tight">
-          <div class="form-group">
-            <input class="input" type="text" id="user-name" v-model="user_forms_name" placeholder="Pick a username">
-          </div>
-        </div>
-
-        <!--div style="margin-top: -7px; margin-bottom: 7px;"><small>By signing up you agree to our <a href="/terms" target="_blank">TOS</a> and <a href="/privacy" target="_blank">Privacy Policy.</a></small><br/>
-       </div-->
-
-        <button class="btn btn-dark btn-block">
-          <span v-if="!creating_user"><%=__("signup")%></span>
-          <span v-if="creating_user"><%=__("signing_up")%></span>
-        </button>
-
-        <div class="center alert alert-danger" style="width:100%;" v-if="signup_error">{{signup_error}}</div>
-
-      </form>
-    </div>
-  </div>
-
-  <div id="password-reset" v-bind:class="{active : active_view == 'password-reset'}">
-    <div class="content" v-if="!password_reset_send">
-      <form>
-        <h4>Password Recovery</h4>
-        <div class="tight">
-          <div class="form-group">
-            <input class="input" type="email" id="user-email" v-model="reset_email" placeholder="<%=__("email")%>">
-          </div>
-        </div>
-        <div class="text-center alert alert-danger" v-if="password_reset_error">{{password_reset_error}}</div>
-        <button class="btn btn-dark btn-block" v-on:click="password_reset_submit($event, reset_email)"><%=__("reset_password")%></button>
-      </form>
-    </div>
-    <div class="content" v-if="password_reset_send==true">
-      <h4>Reset Password</h4>
-      Please check your email inbox.
-    </div>
-  </div>
-
-  <div id="password-confirm" v-bind:class="{active : active_view == 'password-confirm'}">
-    <div class="content">
-      <form>
-        <h4>Password Recovery</h4>
-
-        <div class="tight">
-          <div class="form-group">
-            <input class="input" id="user-password" type="password" v-model="signup_password" placeholder="New Password">
-          </div>
-
-          <div class="form-group">
-            <input class="input" id="user-password" type="password" v-model="signup_password_confirmation" placeholder="Repeat Password">
-          </div>
-        </div>
-
-        <div class="text-center alert alert-danger" v-if="password_reset_confirm_error">{{password_reset_confirm_error}}</div>
-        <button class="btn btn-dark btn-block" v-on:click="password_reset_confirm($event, signup_password, signup_password_confirmation)"><%=__("save")%></button>
-      </form>
-    </div>
-  </div>
-
 </div>

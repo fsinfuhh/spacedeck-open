@@ -17,7 +17,7 @@
 	"signup": "Sign Up",
 	"login": "Log in",
 	"logout": "Log out",
-	"email": "Email Address",
+	"email": "Username",
 	"password": "Password",
 	"width": "Width",
 	"height": "Height",
@@ -45,6 +45,7 @@
 	"specify": "Please Specify",
 	"confirm": "Please Confirm",
 	"error_unknown_email": "This email/password combination is unknown.",
+	"error_unknown_username": "This username/password combination is unknown.",
 	"error_password_confirmation": "The entered passwords don't match.",
 	"error_domain_blocked": "Your domain is blocked.",
 	"error_user_email_already_used": "This email address is already in use.",
@@ -232,7 +233,7 @@
 	"viewer": "viewer",
 	"editor": "editor",
 	"admin": "admin",
-	"logging_in": "logging in",
+	"logging_in": "Logging in…",
 	"password_confirmation": "Password Confirmation",
 	"confirm_again": "We sent you an email explaining how to confirm your email address.",
 	"confirmed": "Your Account was confirmed successfully. Thank you.",
@@ -320,5 +321,6 @@
 	"follow_present": "Follow",
 	"mute_present": "Unfollow",
 	"follow_present_help": "If someone else is presenting this Space, the other members automatically follow the presentation. Switch following on or off with this button.",
-	"export": "export"
+	"export": "export",
+	"username": "username"
 }

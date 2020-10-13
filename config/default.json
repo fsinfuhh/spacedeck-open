@@ -19,6 +19,9 @@
 
   "phantom_api_secret": "very_secret_phantom_password",
 
+  "ldap_url": "ldap://ldap.example.com:389",
+  "ldap_user_dn": "uid=%s,ou=People,dc=example,dc=com",
+
   "mail_provider": "smtp",
   "mail_smtp_host": "your.smtp.host",
   "mail_smtp_port": 465,

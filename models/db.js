@@ -36,13 +36,10 @@ var Action;
 module.exports = {
   User: sequelize.define('user', {
     _id: {type: Sequelize.STRING, primaryKey: true},
-    email: Sequelize.STRING,
-    password_hash: Sequelize.STRING,
-    nickname: Sequelize.STRING,
+    username: Sequelize.STRING,
     avatar_original_uri: Sequelize.STRING,
     avatar_thumb_uri: Sequelize.STRING,
     confirmation_token: Sequelize.STRING,
-    password_reset_token: Sequelize.STRING,
     api_token: Sequelize.STRING,
     home_folder_id: Sequelize.STRING,
     prefs_language: Sequelize.STRING,
@@ -56,7 +53,7 @@ module.exports = {
     return {
       model: this.User,
       as: 'creator',
-      attributes: ['_id','email','nickname',
+      attributes: ['_id','username',
                    'avatar_original_uri',
                    'avatar_thumb_uri',
                    'created_at','updated_at']
