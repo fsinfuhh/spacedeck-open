@@ -44,7 +44,7 @@
 
   <div id="signup" v-bind:class="{active : active_view == 'signup'}">
     <div class="content">
-      <form v-on:submit="signup_submit($event, user_forms_name, user_forms_email, signup_password, signup_password_confirmation, signup_invite_code)">
+      <form v-on:submit="signup_submit($event, user_forms_name, user_forms_email, signup_password, signup_password_confirmation)">
         <h4><%=__("signup")%></h4>
 
         <div class="tight">
@@ -64,9 +64,6 @@
         <div class="tight">
           <div class="form-group">
             <input class="input" type="text" id="user-name" v-model="user_forms_name" placeholder="Pick a username">
-          </div>
-          <div class="form-group">
-            <input class="input" id="invite-code" required type="text" v-model="signup_invite_code" placeholder="Beta Invite Code">
           </div>
         </div>
 

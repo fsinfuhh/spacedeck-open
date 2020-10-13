@@ -11,7 +11,6 @@ SpacedeckUsers = {
     login_email: "",
     login_password: "",
     signup_password: "",
-    signup_invite_code: "",
     signup_password_confirmation: "",
     account_remove_error: null,
     loading_user: false,
@@ -116,7 +115,7 @@ SpacedeckUsers = {
     signup_guest: function(on_success) {
     },
 
-    signup_submit: function($event, name, email, password, password_confirmation, invite_code, on_success) {
+    signup_submit: function($event, name, email, password, password_confirmation, on_success) {
       this.creating_user = true;
       this.signup_error = null;
 
@@ -130,7 +129,7 @@ SpacedeckUsers = {
         $event.stopPropagation();
       }
 
-      create_user(name, email, password, password_confirmation, invite_code, function(session) {
+      create_user(name, email, password, password_confirmation, function(session) {
         this.creating_user = false;
         this.login_submit(email, password, null, on_success);
       }.bind(this), function(req) {
@@ -146,8 +145,8 @@ SpacedeckUsers = {
       }.bind(this));
     },
 
-    signup_submit_modal: function($event, name, email, password, password_confirmation, invite_code) {
-      this.signup_submit($event, name, email, password, password_confirmation, invite_code, function() {
+    signup_submit_modal: function($event, name, email, password, password_confirmation) {
+      this.signup_submit($event, name, email, password, password_confirmation, function() {
         alert("Success.");
         location.reload();
       });
