@@ -322,5 +322,8 @@
 	"follow_present": "Seguir",
 	"mute_present": "Dejar de Seguir",
 	"follow_present_help": "Si alguien más está presentando este espacio, los otros miembros siguen automáticamente la presentación. Active o desactive el seguimiento con este botón.",
-	"export": "exportar"
+	"export": "exportar",
+	"export_pdf": "Exportar como PDF",
+	"export_html": "Exportar como HTML",
+	"export_image": "Exportar como imagen"
 }

@@ -158,6 +158,10 @@ function save_pdf_file(space, point, file, zones, on_success, on_error, on_progr
   load_resource("post", "/spaces/"+space._id+"/artifacts-pdf?filename="+file.name + "&x="+point.x+"&y="+point.y + "&zones="+zones,file,on_success,on_error,on_progress);
 }
 
+function load_pdf_link(id, on_success, on_error) {
+  load_resource("get", "/spaces/"+id+"/pdf", null, on_success, on_error);
+}
+
 function save_artifact_file(a, file,filename, on_success, on_error, on_progress) {
   load_resource("post", "/spaces/"+a.space_id+"/artifacts/"+a._id+"/payload?filename="+filename,file,on_success,on_error,on_progress);
 }

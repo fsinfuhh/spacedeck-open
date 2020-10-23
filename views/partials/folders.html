@@ -158,6 +158,9 @@
               <ul class="select-list">
                 <li v-on:click="rename_space(item)"><span><span class="icon icon-sm icon-tag"></span><%=  __('rename') %></span></li>
                 <li v-on:click="delete_space(item)"><span><span class="icon icon-sm icon-trash"></span><%=  __('delete') %></span></li>
+                <li v-on:click="export_pdf(item)"><span><span class="icon icon-sm icon-file-share"></span><%= __('export_pdf') %></span></li>
+                <li v-on:click="export_html(item)"><span><span class="icon icon-sm icon-file-share"></span><%= __('export_html') %></span></li>
+                <li v-on:click="export_image(item)"><span><span class="icon icon-sm icon-file-share"></span><%= __('export_image') %></span></li>
               </ul>
             </div>
           </div>

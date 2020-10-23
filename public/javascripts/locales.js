@@ -319,7 +319,10 @@ window.locales.en.translation =
 	"Previous Zone": "Previous Zone",
 	"Next Zone": "Next Zone",
 	"promote": "promote",
-	"demote": "demote"
+	"demote": "demote",
+	"export_pdf": "Export as PDF",
+	"export_html": "Export as HTML",
+	"export_png": "Export as PNG"
 }
 window.locales.de.translation = 
 {
@@ -631,7 +634,10 @@ window.locales.de.translation =
 	"promote": "Befördern",
 	"demote": "Zurückstufen",
 	"Previous Zone": "Vorherige Zone",
-	"Next Zone": "Nächste Zone"
+	"Next Zone": "Nächste Zone",
+	"export_pdf": "Exportieren als PDF",
+	"export_html": "Exportieren als HTML",
+	"export_png": "Exportieren als PNG"
 }
 
 window.locales.fr.translation = 
@@ -942,7 +948,10 @@ window.locales.fr.translation =
 	"Next Zone": "Zone suivante",
 	"list": "liste",
 	"promote": "promouvoir",
-	"demote": "rétrograder"
+	"demote": "rétrograder",
+	"export_pdf": "Exporter en PDF",
+	"export_html": "Exporter en HTML",
+	"export_png": "Exporter en PNG"
 }
 window.locales.oc.translation = 
 {
@@ -1267,5 +1276,8 @@ window.locales.oc.translation =
     "follow_present": "Seguir",
     "mute_present": "Quitar de seguir",
     "follow_present_help": "follow_present_help",
-    "export": "exportar"
+    "export": "exportar",
+    "export_pdf": "Exportar PDF",
+    "export_html": "Exportar HTML",
+    "export_png": "Exportar PNG"
 }

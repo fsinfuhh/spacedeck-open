@@ -322,5 +322,8 @@
 	"mute_present": "Unfollow",
 	"follow_present_help": "If someone else is presenting this Space, the other members automatically follow the presentation. Switch following on or off with this button.",
 	"export": "export",
-	"username": "username"
+	"username": "username",
+	"export_pdf": "Export as PDF",
+	"export_html": "Export as HTML",
+	"export_image": "Export as image"
 }

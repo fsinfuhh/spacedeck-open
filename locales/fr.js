@@ -316,5 +316,8 @@
 	"more": "plus",
 	"follow_present": "Suivre",
 	"mute_present": "Pas suivre",
-	"follow_present_help": "follow_present_help"
+	"follow_present_help": "follow_present_help",
+	"export_pdf": "Exporter en PDF",
+	"export_html": "Exporter en HTML",
+	"export_image": "Exporter en image"
 }

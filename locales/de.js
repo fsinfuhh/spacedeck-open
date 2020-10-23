@@ -319,5 +319,8 @@
 	"more": "mehr",
 	"follow_present": "Folgen",
 	"mute_present": "Entfolgen",
-  "follow_present_help": "Wenn jemand den Space präsentiert, folgen die anderen Mitglieder automatisch der Präsentation. Mit diesem Knopf lässt sich das an- oder ausschalten."
+	"follow_present_help": "Wenn jemand den Space präsentiert, folgen die anderen Mitglieder automatisch der Präsentation. Mit diesem Knopf lässt sich das an- oder ausschalten.",
+	"export_pdf": "Als PDF exportieren",
+	"export_html": "Als HTML exportieren",
+	"export_image": "Als Bild exportieren"
 }

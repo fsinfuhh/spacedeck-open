@@ -322,5 +322,8 @@
     "follow_present": "Seguir",
     "mute_present": "Quitar de seguir",
     "follow_present_help": "follow_present_help",
-    "export": "exportar"
+    "export": "exportar",
+    "export_pdf": "Exportar PDF",
+    "export_html": "Exportar HTML",
+    "export_image": "Exportar imatge"
 }

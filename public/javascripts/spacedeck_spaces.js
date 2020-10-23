@@ -899,6 +899,22 @@ var SpacedeckSpaces = {
         if (!confirmed) return;
         location.reload();
       });
+    },
+
+    export_image: function(space) {
+      window.open("/api/spaces/" + space._id + "/png", "_blank");
+    },
+
+    export_html: function(space) {
+      window.open("/api/spaces/" + space._id + "/html", "_blank");
+    },
+
+    export_pdf: function(space) {
+      load_pdf_link(space._id, function(res) {
+        window.open(res.url, "_blank");
+      }, function(res) {
+        console.err(res);
+      });
     }
   }
 }
