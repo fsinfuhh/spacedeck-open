@@ -1,13 +1,14 @@
-FROM node:10-alpine3.11
+FROM node:10-buster
 
 WORKDIR /app
 
 # build audiowaveform from source
 
-RUN apk add git make cmake gcc g++ libmad-dev libid3tag-dev libsndfile-dev gd-dev boost-dev libgd libpng-dev zlib-dev
-RUN apk add zlib-static libpng-static boost-static
+RUN apt update
+RUN apt install -y git make cmake gcc g++ libmad0-dev libid3tag0-dev libsndfile1-dev libgd-dev libboost-dev libpng-dev zlib1g-dev
+RUN apt install -y libboost-program-options-dev libboost-regex-dev libboost-filesystem-dev libboost-system-dev
 
-RUN apk add autoconf automake libtool gettext
+RUN apt install -y autoconf automake libtool-bin gettext
 RUN wget https://github.com/xiph/flac/archive/1.3.3.tar.gz
 RUN tar xzf 1.3.3.tar.gz
 RUN cd flac-1.3.3/ && ./autogen.sh
@@ -23,7 +24,7 @@ RUN cd audiowaveform/build/ && make install
 
 # install other requirements
 
-RUN apk add graphicsmagick ffmpeg ffmpeg-dev ghostscript
+RUN apt install -y graphicsmagick ffmpeg ghostscript
 
 # install node package
 
